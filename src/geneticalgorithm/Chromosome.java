@@ -55,6 +55,26 @@ public class Chromosome
 		
 	}
 	
+	public int[] getInteger()
+	{
+		return integer;
+	}
+
+	public void setInteger(int[] integer)
+	{
+		this.integer = integer;
+	}
+
+	public int[] getDecimal()
+	{
+		return decimal;
+	}
+
+	public void setDecimal(int[] decimal)
+	{
+		this.decimal = decimal;
+	}
+
 	public double getValue()
 	{
 		int i;
@@ -83,10 +103,12 @@ public class Chromosome
 	public static void crossover(Chromosome p1, Chromosome p2)
 	{
 		int i, p;
-		Chromosome tmp1, tmp2;
 		Random r = new Random();
 		
+		tmp1 = p1;
+		tmp2 = p2;
 		p = r.nextInt(Chromosome.BITS);
+		
 		
 		
 		

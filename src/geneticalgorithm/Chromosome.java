@@ -6,7 +6,7 @@ public class Chromosome
 {
 	private int[] integer;
 	private int[] decimal;
-	private static final int BITS = 16;
+	private static int BITS = 16;
 	
 	public Chromosome()
 	{
@@ -28,6 +28,31 @@ public class Chromosome
 			else
 				decimal[i] = 0;
 		}
+	}
+	
+	public Chromosome(int bits)
+	{
+		int i;
+		Random r = new Random();
+		
+		this.BITS = bits;
+		
+		integer = new int[BITS];
+		decimal = new int[BITS];
+		
+		for(i = 0; i < BITS; i++)
+		{
+			if(r.nextBoolean())
+				integer[i] = 1;
+			else
+				integer[i] = 0;
+			
+			if(r.nextBoolean())
+				decimal[i] = 1;
+			else
+				decimal[i] = 0;
+		}
+		
 	}
 	
 	public double getValue()

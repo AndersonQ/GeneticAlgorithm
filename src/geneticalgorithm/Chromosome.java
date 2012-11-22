@@ -166,6 +166,7 @@ public class Chromosome implements Comparable
 		//Cast to Chromosome
 		Chromosome c = (Chromosome) o;
 		
+		//Compare
 		if(this.getRank() == c.getRank())
 		{
 			return 0;

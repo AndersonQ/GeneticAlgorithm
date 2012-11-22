@@ -1,5 +1,7 @@
 package ag;
 
+import java.util.Random;
+
 public class chromosome
 {
 	private int[] integer;
@@ -9,14 +11,23 @@ public class chromosome
 	public chromosome()
 	{
 		int i;
+		Random r = new Random();
 		
 		integer = new int[BITS];
 		decimal = new int[BITS];
 		
 		for(i = 0; i < BITS; i++)
 		{
-			integer[i] = 0;
-			decimal[i] = 0;
+			if(r.nextBoolean())
+				integer[i] = 1;
+			else
+				integer[i] = 0;
+			
+			if(r.nextBoolean())
+				decimal[i] = 1;
+			else
+				decimal[i] = 0;
+
 		}
 	}
 	

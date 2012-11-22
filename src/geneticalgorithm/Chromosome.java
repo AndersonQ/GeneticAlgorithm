@@ -2,13 +2,13 @@ package geneticalgorithm;
 
 import java.util.Random;
 
-public class chromosome
+public class Chromosome
 {
 	private int[] integer;
 	private int[] decimal;
 	private static final int BITS = 16;
 	
-	public chromosome()
+	public Chromosome()
 	{
 		int i;
 		Random r = new Random();

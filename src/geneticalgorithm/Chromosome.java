@@ -27,7 +27,6 @@ public class Chromosome
 				decimal[i] = 1;
 			else
 				decimal[i] = 0;
-
 		}
 	}
 	
@@ -38,8 +37,8 @@ public class Chromosome
 		
 		for(i = 0; i < BITS; i++)
 		{
-			pint += integer[i]*(Math.pow(2, i + 1));
-			pdec += decimal[i]*(Math.pow(2, i + 1));
+			pint += integer[i]*(Math.pow(2, i));
+			pdec += decimal[i]*(Math.pow(2, i));
 		}
 		
 		return Double.parseDouble(String.format("%d.%d", pint, pdec));

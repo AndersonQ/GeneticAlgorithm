@@ -148,4 +148,24 @@ public class Chromosome
 		p2.setInteger(pint2);
 		p2.setDecimal(pdec2);
 	}
+	
+	public String toString()
+	{
+		String ret = new String("");
+		int i;
+		
+		for(i = Chromosome.BITS - 1; i >= 0; i--)
+		{
+			ret = String.format("%s%d", ret, integer[i]);
+		}
+		
+		ret = String.format("%s.", ret);
+		
+		for(i = Chromosome.BITS - 1; i >= 0; i--)
+		{
+			ret = String.format("%s%d", ret, decimal[i]);
+		}
+		
+		return ret;
+	}
 }

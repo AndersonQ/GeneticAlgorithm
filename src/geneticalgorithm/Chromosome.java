@@ -4,8 +4,11 @@ import java.util.Random;
 
 public class Chromosome
 {
+	/** Integer part of chromosome */
 	private int[] integer;
+	/** Float part of chromosome */
 	private int[] decimal;
+	/** Number of bits of each chromosome part */
 	private static int BITS = 16;
 	
 	public Chromosome()

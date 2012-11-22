@@ -106,24 +106,46 @@ public class Chromosome
 	public static void crossover(Chromosome p1, Chromosome p2)
 	{
 		int i, p;
-		int[] pint1, pint2, pdec1, pdec2;
+		int[] tmpint, tmpdec, pint1, pint2, pdec1, pdec2;
 		Random r = new Random();
 		
-		pint1 = new int[Chromosome.BITS];
-		pint2 = new int[Chromosome.BITS];
-		pdec1 = new int[Chromosome.BITS];
-		pdec1 = new int[Chromosome.BITS];
+		tmpint = new int[Chromosome.BITS];
+		tmpdec = new int[Chromosome.BITS];
 		
-		for(i = 0; i < Chromosome.BITS; i++)
-		{
-			
-		}
+		/* Get the vectors of bit to work */
+		pint1 = p1.getInteger();
+		pint2 = p2.getInteger();
+		pdec1 = p1.getDecimal();
+		pdec2 = p2.getDecimal();
 		
+		/* Get the position to do the crossover */
 		p = r.nextInt(Chromosome.BITS);
 		
+		/*
+		 * for 0  to p:
+		 * swap the i-th position of p1 and p2
+		 * 
+		 */
+		for(i = 0; i < p; i++)
+		{
+			/* Store in a temp var */
+			tmpint[i] = pint1[i];
+			tmpdec[i] = pdec1[i];
+
+			/* get pint2/pdec2 and put it in pint1/pdec1 */
+			pint1[i] = pint2[i];
+			pdec1[i] = pdec2[i];
+			
+			/* get tmpint/tmpdec and put it in pint1/pdec1 */
+			pint2[i] = tmpint[i];
+			pdec2[i] = tmpdec[i];
+		}
 		
+		/* store the new vector in the received objects */
+		p1.setInteger(pint1);
+		p1.setDecimal(pdec1);
 		
-		
-		
+		p2.setInteger(pint2);
+		p2.setDecimal(pdec2);
 	}
 }

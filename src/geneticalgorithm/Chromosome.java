@@ -2,7 +2,7 @@ package geneticalgorithm;
 
 import java.util.Random;
 
-public class Chromosome
+public class Chromosome implements Comparable
 {
 	/** Integer part of chromosome */
 	private int[] integer;
@@ -10,12 +10,15 @@ public class Chromosome
 	private int[] decimal;
 	/** Number of bits of each chromosome part */
 	private static int BITS = 16;
+	/** A rank to this chromosome, it means, how good it is to evaluate function*/
+	private double rank;
 	
 	public Chromosome()
 	{
 		int i;
 		Random r = new Random();
 		
+		this.rank = 0.0;
 		integer = new int[BITS];
 		decimal = new int[BITS];
 		
@@ -38,6 +41,7 @@ public class Chromosome
 		int i;
 		Random r = new Random();
 		
+		this.rank = 0.0;
 		this.BITS = bits;
 		
 		integer = new int[BITS];
@@ -76,6 +80,14 @@ public class Chromosome
 	public void setDecimal(int[] decimal)
 	{
 		this.decimal = decimal;
+	}
+
+	public double getRank() {
+		return rank;
+	}
+
+	public void setRank(double rank) {
+		this.rank = rank;
 	}
 
 	public double getValue()
@@ -147,5 +159,24 @@ public class Chromosome
 		
 		p2.setInteger(pint2);
 		p2.setDecimal(pdec2);
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		//Cast to Chromosome
+		Chromosome c = (Chromosome) o;
+		
+		if(this.getRank() == c.getRank())
+		{
+			return 0;
+		}
+		else if(this.getRank() > c.getRank())
+		{
+			return 1;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 }

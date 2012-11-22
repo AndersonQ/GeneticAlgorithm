@@ -106,10 +106,19 @@ public class Chromosome
 	public static void crossover(Chromosome p1, Chromosome p2)
 	{
 		int i, p;
+		int[] pint1, pint2, pdec1, pdec2;
 		Random r = new Random();
 		
-		tmp1 = p1;
-		tmp2 = p2;
+		pint1 = new int[Chromosome.BITS];
+		pint2 = new int[Chromosome.BITS];
+		pdec1 = new int[Chromosome.BITS];
+		pdec1 = new int[Chromosome.BITS];
+		
+		for(i = 0; i < Chromosome.BITS; i++)
+		{
+			
+		}
+		
 		p = r.nextInt(Chromosome.BITS);
 		
 		

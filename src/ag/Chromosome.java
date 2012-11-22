@@ -2,13 +2,13 @@ package ag;
 
 import java.util.Random;
 
-public class chromosome
+public class Chromosome
 {
 	private int[] integer;
 	private int[] decimal;
 	private static final int BITS = 16;
 	
-	public chromosome()
+	public Chromosome()
 	{
 		int i;
 		Random r = new Random();
@@ -43,5 +43,10 @@ public class chromosome
 		}
 		
 		return Double.parseDouble(String.format("%d.%d", pint, pdec));
+	}
+	
+	public static void crossover(Chromosome p1, Chromosome p2)
+	{
+		
 	}
 }

@@ -44,4 +44,28 @@ public class Chromosome
 		
 		return Double.parseDouble(String.format("%d.%d", pint, pdec));
 	}
+	
+	/**
+	 * This function gets two Chromosomes
+	 * and make a crossover of them in a single
+	 * point.
+	 * 
+	 * The chromosome received will be modified
+	 * to be the result of crossover. 
+	 * 
+	 * @param p1 
+	 * @param p2
+	 */
+	public static void crossover(Chromosome p1, Chromosome p2)
+	{
+		int i, p;
+		Chromosome tmp1, tmp2;
+		Random r = new Random();
+		
+		p = r.nextInt(Chromosome.BITS);
+		
+		
+		
+		
+	}
 }

@@ -14,6 +14,8 @@ public class testing
 		System.out.println(c1.getValue());
 		System.out.println(c2.getValue());
 		
+		System.out.println(c1);
+		System.out.println(c2);		
 	}
 
 }

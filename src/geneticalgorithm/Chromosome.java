@@ -160,10 +160,10 @@ public class Chromosome implements Comparable
 		p2.setInteger(pint2);
 		p2.setDecimal(pdec2);
 	}
+	
 	/**
 	 * Estou testando o uso do Eclipse com o Git.
-	 * Por algum motivo todas as linha sumiram e depois apareceram intactas abaixo
-	 * Vou dar ou Save e outro Commit
+	 * Deletando linhas
 	 */
 
 	@Override

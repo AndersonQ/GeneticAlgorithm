@@ -162,6 +162,8 @@ public class Chromosome implements Comparable
 	}
 	/**
 	 * Estou testando o uso do Eclipse com o Git.
+	 * Por algum motivo todas as linha sumiram e depois apareceram intactas abaixo
+	 * Vou dar ou Save e outro Commit
 	 */
 
 	@Override

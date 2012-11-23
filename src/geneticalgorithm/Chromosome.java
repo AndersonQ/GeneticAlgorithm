@@ -160,6 +160,9 @@ public class Chromosome implements Comparable
 		p2.setInteger(pint2);
 		p2.setDecimal(pdec2);
 	}
+	/**
+	 * Estou testando o uso do Eclipse com o Git.
+	 */
 
 	@Override
 	public String toString()

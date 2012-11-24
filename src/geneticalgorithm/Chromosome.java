@@ -186,22 +186,17 @@ public class Chromosome implements Comparable
 			// set '0' or '1' with 50%. Is there a way to complement bit? "cpl bit"? 
 			// integer part
 			if (r <= 0.5) 
-			{
 				pint1[i] = 1;
-			}
-			else{
+			else
 				pint1[i] = 0;
-			}
-			
+						
 			r = Math.random(); //sort random again to not be equal to integer
 			// decimal part  
 			if (r <= 0.5) 
-			{
 				pdec1[i] = 1;
-			}
-			else{
+			else
 				pdec1[i] = 0;
-			}
+			
 		}
 	}
 	/* FHZ edition end-----------------------*/

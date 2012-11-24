@@ -162,10 +162,50 @@ public class Chromosome implements Comparable
 	}
 	
 	/**
-	 * Estou testando o uso do Eclipse com o Git.
-	 * Deletando linhas
+	 * Ok. I understood how to edit and commit.
+	 * The next function is a simple way to mutate a Chromosom
+	 * A Random Chromosom should be selected from a non-Elite List
+	 * The probability of a Chromosom be chosen should be set by user
+	 * at the beginning of iterations
 	 */
-
+	/* FHZ edition start-----------------------*/
+	public static void mutation (Chromosome p1)
+	{
+		//int ;
+		int[] pint1, pdec1;
+		double r;
+		
+		/* Get the vectors of bit to work */
+		pint1 = p1.getInteger();
+		pdec1 = p1.getDecimal();
+		
+		/* Set the i-th position to '0' ou '1' */
+		for(int i = 0; i < Chromosome.BITS; i++)
+		{
+			r = Math.random();
+			// set '0' or '1' with 50%. Is there a way to complement bit? "cpl bit"? 
+			// integer part
+			if (r <= 0.5) 
+			{
+				pint1[i] = 1;
+			}
+			else{
+				pint1[i] = 0;
+			}
+			
+			r = Math.random(); //sort random again to not be equal to integer
+			// decimal part  
+			if (r <= 0.5) 
+			{
+				pdec1[i] = 1;
+			}
+			else{
+				pdec1[i] = 0;
+			}
+		}
+	}
+	/* FHZ edition end-----------------------*/
+	
 	@Override
 	public String toString()
 	{

@@ -18,6 +18,15 @@ public class testing
 
         System.out.println(c1);
         System.out.println(c2);
+
+        System.out.println("Mutating....");
+        c1.mutation(1.0);
+        c2.mutation(1.0);
+
+        System.out.println(c1);
+        System.out.println(c2);
+
+        System.exit(0);
         /*
          * Sorry guys, I made it to select somes rates at the main flow of the program
          * but I was afraid to make any mistake with the main class

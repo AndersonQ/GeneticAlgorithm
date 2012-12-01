@@ -176,7 +176,7 @@ public class Chromosome implements Comparable
 	    pdec1 = this.getDecimal();
 
 	    /* Select the bit to change */
-	    i = (int) Math.ceil(Math.random()*Chromosome.BITS);
+	    i = (int) Math.floor(Math.random()*Chromosome.BITS);
 	    /*
 	     * If the generated number is less than or equal
 	     * to tax, mutate the i-th position
@@ -185,7 +185,7 @@ public class Chromosome implements Comparable
 	        pint1[i] = (pint1[i]+1)%2;
 
 	    /* Select the bit to change */
-        i = (int) Math.ceil(Math.random()*Chromosome.BITS);
+        i = (int) Math.floor(Math.random()*Chromosome.BITS);
         /*
          * If the generated number is less than or equal
          * to tax, mutate the i-th position

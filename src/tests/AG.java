@@ -111,7 +111,7 @@ public class AG
         double v, x = c.getValue();
 
         //v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
-        v = -1*Math.pow(x-1, 2.0);
+        v = 1*Math.pow(x-1, 2.0)+5; //it's not f(x) = (x-1)^2 +5
 
         return v;
     }

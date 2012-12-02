@@ -115,20 +115,39 @@ public class Chromosome implements Comparable
 	 * @param p1 
 	 * @param p2
 	 */
-	public static void crossover(Chromosome p1, Chromosome p2)
+	public static Chromosome[] crossover(Chromosome p1, Chromosome p2)
 	{
 		int i, p;
 		int[] tmpint, tmpdec, pint1, pint2, pdec1, pdec2;
+		Chromosome ret[];
 		Random r = new Random();
+		
+		ret = new Chromosome[2];
+		ret[0] = new Chromosome();
+		ret[1] = new Chromosome();
 
 		tmpint = new int[Chromosome.BITS];
 		tmpdec = new int[Chromosome.BITS];
 
-		/* Get the vectors of bit to work */
-		pint1 = p1.getInteger();
-		pint2 = p2.getInteger();
-		pdec1 = p1.getDecimal();
-		pdec2 = p2.getDecimal();
+//		/* Copy the vectors of bit to work */
+//		pint1 = p1.getInteger();
+//		pint2 = p2.getInteger();
+//		pdec1 = p1.getDecimal();
+//		pdec2 = p2.getDecimal();
+		
+        pint1 = new int[Chromosome.BITS];
+        pint2 = new int[Chromosome.BITS];
+        pdec1 = new int[Chromosome.BITS];
+        pdec2 = new int[Chromosome.BITS];
+        
+        for(i = 0; i <Chromosome.BITS; i++)
+        {
+            pint1[i] = p1.getInteger()[i];
+            pint2[i] = p2.getInteger()[i];
+            
+            pdec1[i] = p1.getDecimal()[i];
+            pdec2[i] = p2.getDecimal()[i];
+        }
 
 		/* Get the position to do the crossover */
 		p = r.nextInt(Chromosome.BITS);
@@ -154,11 +173,18 @@ public class Chromosome implements Comparable
 		}
 
 		/* store the new vector in the received objects */
-		p1.setInteger(pint1);
-		p1.setDecimal(pdec1);
-
-		p2.setInteger(pint2);
-		p2.setDecimal(pdec2);
+//		p1.setInteger(pint1);
+//		p1.setDecimal(pdec1);
+//
+//		p2.setInteger(pint2);
+//		p2.setDecimal(pdec2);
+		ret[0].setInteger(pint1);
+		ret[0].setDecimal(pdec1);
+		
+		ret[1].setInteger(pint2);
+		ret[1].setDecimal(pdec2);
+		
+		return ret;
 	}
 	
 	/**

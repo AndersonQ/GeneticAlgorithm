@@ -69,6 +69,7 @@ public class AG
              *  - Select two chromosomes
              *  - Do a crossover
              *  - Store the result into n_pop;
+             *  - Mutate it
              */
             for(k = 0; k < elite; k++)
             {
@@ -107,6 +108,7 @@ public class AG
                 
                 Chromosome cross[] = Chromosome.crossover(p1, p2);
                 n_pop[k] = cross[0];
+                n_pop[k].mutation(mutation);
             }
             o_pop = n_pop;
         }

@@ -16,7 +16,7 @@ public class AG
         double elitep = 0.020;
         double total, r;
         int pop = 10;
-        int cycles = 8;
+        int cycles = 20;
         int i, k, j;
         int elite = (int) Math.floor(pop*(1 - elitep));
         Chromosome o_pop[], n_pop[], p1, p2;
@@ -41,7 +41,7 @@ public class AG
             {
                 o_pop[k].setRank(evaluate(o_pop[k]));
                 total += o_pop[k].getRank();
-                System.out.printf("[%d] = %f\n", k, o_pop[k].getRank());
+                System.out.printf("[%d] f(%f) = %f\n", k, o_pop[k].getValue(), o_pop[k].getRank());
             }
             System.out.printf("Total = %f\n", total);
 
@@ -109,7 +109,9 @@ public class AG
     {
         double v, x = c.getValue();
 
-        v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
+//        v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
+        /* -(x-1)^2 +100*/
+        v = -Math.pow(c.getValue() - 500.0, 2.0) + 100.0;
 
         return v;
     }

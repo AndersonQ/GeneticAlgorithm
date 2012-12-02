@@ -58,7 +58,7 @@ public class AG
             for(k = 0; k < pop; k++)
                 System.out.printf("[%d] %f%%\n", k, o_pop[k].getRank());
 
-            /* Put the elite in the new poupation vector */
+            /* Put the elite in the new population vector */
             for(k = elite; k < pop; k++)
                 n_pop[k] = o_pop[k];
 
@@ -110,7 +110,8 @@ public class AG
     {
         double v, x = c.getValue();
 
-        v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
+        //v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
+        v = -1*Math.pow(x-1, 2.0);
 
         return v;
     }

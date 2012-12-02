@@ -41,7 +41,8 @@ public class AG
             {
                 o_pop[k].setRank(evaluate(o_pop[k]));
                 total += o_pop[k].getRank();
-                System.out.printf("[%d] = %f\n", k, o_pop[k].getRank());
+                /* Adding the value of Chromosome na exibição*/
+                System.out.printf("[%d] = f(%f) = %f\n", k, o_pop[k].getValue(), o_pop[k].getRank());
             }
             System.out.printf("Total = %f\n", total);
 

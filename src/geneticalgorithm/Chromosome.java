@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
-public class Chromosome implements Comparable
+public class Chromosome
 {
 	/** Integer part of chromosome */
 	private int[] integer;
@@ -309,5 +309,10 @@ public class Chromosome implements Comparable
     public static int getBITS()
     {
         return BITS;
+    }
+
+    public static void setBITS(int bITS)
+    {
+        BITS = bITS;
     }
 }

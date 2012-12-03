@@ -61,7 +61,6 @@ public class RunAG
         System.out.printf("0 - Sair\n");
         System.out.printf("1 - Maximizar funcao\n");
         System.out.printf("2 - Minimizar funcao\n");
-
         System.out.printf("> ");
         op = sc.nextInt();
 
@@ -86,12 +85,15 @@ public class RunAG
             }
             break;
         default:
-            System.out.println("Opção " + op + "inválida, por favor escolha:");
-            System.out.printf("0 - Sair\n");
-            System.out.printf("1 - Maximizar funcao\n");
-            System.out.printf("2 - Minimizar funcao\n");
-            System.out.printf("> ");
-            op = sc.nextInt();
+        	while (op != 1 || op != 2)
+        	{
+	            System.out.println("Opção " + op + "inválida, por favor escolha:");
+	            System.out.printf("0 - Sair\n");
+	            System.out.printf("1 - Maximizar funcao\n");
+	            System.out.printf("2 - Minimizar funcao\n");
+	            System.out.printf("> ");
+	            op = sc.nextInt();
+        	}
             break;
         }
         /* End set up variables */

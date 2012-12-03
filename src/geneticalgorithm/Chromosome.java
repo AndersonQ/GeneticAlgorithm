@@ -304,23 +304,8 @@ public class Chromosome implements Comparable
 		return ret;
 	}
 
-	public int compareTo(Object o)
-	{
-		//Cast to Chromosome
-		Chromosome c = (Chromosome) o;
-
-		//Compare
-		if(this.getRank() == c.getRank())
-		{
-			return 0;
-		}
-		else if(this.getRank() > c.getRank())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    public static int getBITS()
+    {
+        return BITS;
+    }
 }

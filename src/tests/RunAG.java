@@ -114,38 +114,37 @@ public class RunAG
 
         for(i = 0; i < cycles; i++)
         {
-            System.out.printf("==================Generation %d==================\nEvaluating....\n", i);
+            System.out.printf("==================Generation %d==================\n", i);
             /* Evaluate */
             for(k = 0; k < pop; k++)
-            {
                 o_pop[k].setRank(evaluate(o_pop[k]));
-                System.out.printf("[%d] = f(%f) = %f\n", k, o_pop[k].getValue(), o_pop[k].getRank());
-            }
 
             /* Sort the vector using Rank*/
             Arrays.sort(o_pop, comp);
-            for(Chromosome c: o_pop)
-                System.out.printf("f(%f) = %f\n", c.getValue(), c.getRank());
 
             /* Put the elite in the new population vector */
-            System.out.println("Elite:");
+            System.out.println("População:");
             for(k = 0; k < elite; k++)
             {
                 n_pop[k] = o_pop[k];
-                System.out.printf("Elite[%d] = %s = %f\n", k, n_pop[k], n_pop[k].getRank());
+                System.out.printf("Elite[%d] = f(%f) = %f {%s}\n", k, o_pop[k].getValue(), o_pop[k].getRank(), o_pop[k]);
             }
+
+            /* Print everyone */
+            for(k = elite; k < pop; k++)
+                System.out.printf("      [%d] = f(%f) = %f {%s}\n", k, o_pop[k].getValue(), o_pop[k].getRank(), o_pop[k]);
 
             /* Do a contest */
             tmp = Chromosome.contest(o_pop, (pop-elite), 5);
-            
+
             /* Put the result of the contest in n_pop */
             for(k = 0; k < pop-elite; k++)
             {
-            	//Apply crossover, or not
-            	if(Math.random() <= txcross)
-            		n_pop[k+elite] = tmp[k];
-            	else
-            		n_pop[k+elite] = o_pop[k+elite];
+                //Apply crossover, or not
+                if(Math.random() <= txcross)
+                    n_pop[k+elite] = tmp[k];
+                else
+                    n_pop[k+elite] = o_pop[k+elite];
             }
 
             /* Mutate */
@@ -153,9 +152,6 @@ public class RunAG
                 n_pop[k].mutation(mutation);
 
             o_pop = n_pop;
-            System.out.println("Final population:");
-            for(Chromosome c: o_pop)
-                System.out.println(c);
             System.out.flush();
         }
     }

@@ -154,6 +154,26 @@ public class RunAG
             o_pop = n_pop;
             System.out.flush();
         }
+
+        /* Evaluate the last population */
+        for(k = 0; k < pop; k++)
+            o_pop[k].setRank(evaluate(o_pop[k]));
+
+        /* Sort the vector using Rank*/
+        Arrays.sort(o_pop, comp);
+
+        System.out.println("\n\nTerminado!\n");
+        System.out.println("A última população é: ");
+        /* Put the elite in the new population vector */
+        for(k = 0; k < elite; k++)
+            System.out.printf("Elite[%d] = f(%f) = %f {%s}\n", k, o_pop[k].getValue(), o_pop[k].getRank(), o_pop[k]);
+
+        /* Print everyone */
+        for(k = elite; k < pop; k++)
+            System.out.printf("      [%d] = f(%f) = %f {%s}\n", k, o_pop[k].getValue(), o_pop[k].getRank(), o_pop[k]);
+
+        System.out.println("\n\nA melhor solução é:\n");
+        System.out.printf("f(%f) = %f\nChromossomo: %s\n", o_pop[0].getValue(), o_pop[0].getRank(), o_pop[0]);
     }
 
     public static double evaluate(Chromosome c)

@@ -17,12 +17,11 @@ public class AG
     {
         double mutation = 0.05;
         double elitep = 0.10;
-        double total, r;
-        int pop = 10;
-        int cycles = 10;
-        int i, k, j;
+        int pop = 50;
+        int cycles = 50;
+        int i, k;
         int elite = (int) Math.floor(pop*(elitep));
-        Chromosome o_pop[], n_pop[], p1, p2, tmp[];
+        Chromosome o_pop[], n_pop[], tmp[];
 
         o_pop = new Chromosome[pop];
         n_pop = new Chromosome[pop];
@@ -41,32 +40,17 @@ public class AG
         for(i = 0; i < cycles; i++)
         {
             System.out.printf("==================Generation %d==================\nEvaluating....\n", i);
-            total = 0;
-
             /* Evaluate */
             for(k = 0; k < pop; k++)
             {
                 o_pop[k].setRank(evaluate(o_pop[k]));
-                total += o_pop[k].getRank();
-                /* Adding the value of Chromosome na exibi��o*/
                 System.out.printf("[%d] = f(%f) = %f\n", k, o_pop[k].getValue(), o_pop[k].getRank());
             }
-            System.out.printf("Total = %f\n", total);
-
-//            /* Calculate the percentage of fitness and store it in Rank */
-//            for(k = 0; k < pop; k++)
-//                o_pop[k].setRank(o_pop[k].getRank()/total);
 
             /* Sort the vector using Rank*/
             Arrays.sort(o_pop, new CompMaximize());
-            System.out.println("Sorted!");
             for(Chromosome c: o_pop)
                 System.out.printf("f(%f) = %f\n", c.getValue(), c.getRank());
-
-            /* Print the percentage of fitness */
-//            System.out.printf("Percentage of fitness\n");
-//            for(k = 0; k < pop; k++)
-//                System.out.printf("[%d] %f%%\n", k, o_pop[k].getRank());
 
             /* Put the elite in the new population vector */
             System.out.println("Elite:");
@@ -76,47 +60,6 @@ public class AG
                 System.out.printf("Elite[%d] = %s = %f\n", k, n_pop[k], n_pop[k].getRank());
             }
 
-            /*
-             * For the rest of the new population:
-             *  - Select two chromosomes
-             *  - Do a crossover
-             *  - Store the result into n_pop;
-             *  - Mutate it
-             */
-//            for(k = 0; k < elite; k++)
-//            {
-//                /* Select p1 */
-//                r = Math.random();
-//                for(j = 0; j < pop; j++)
-//                    if(r <= o_pop[j].getRank())
-//                        break;
-//
-//                if(j == pop)
-//                    j = pop - 1;
-//                p1 = o_pop[j];
-//
-//                /* Select p2 */
-//                r = Math.random();
-//                for(j = 0; j < pop; j++)
-//                    if(r <= o_pop[j].getRank())
-//                        break;
-//
-//                if(j == pop)
-//                    j = pop - 1;
-//                p2 = o_pop[j];
-//
-//                /* Avoid Index out of bounds */
-//                if(p1 == p2)
-//                    if(j != 0)
-//                        p2 = o_pop[--j];
-//                    else
-//                        p2 = o_pop[++j];
-//
-//                Chromosome cross[] = Chromosome.crossover(p1, p2);
-//                n_pop[k] = cross[0];
-//                n_pop[k].mutation(mutation);
-//            }
-            
             /* Do a contest */
             tmp = contest(o_pop, (pop-elite), 5);
             
@@ -140,8 +83,7 @@ public class AG
     {
         double v, x = c.getValue();
 
-        //v = 50000000000000000000.01*Math.pow(x, -5.0)/(Math.exp(100.0/x) - 1.0);
-        v = -1.0*Math.pow(x-1.0, 2.0)+5.0; //it's not f(x) = -(x-1)^2 +5
+        v = -1.0*Math.pow(x-1.0, 2.0)+5.0; //it's f(x) = -(x-1)^2 +5
 
         return v;
     }
@@ -175,7 +117,6 @@ public class AG
             for(j = 0; j < k; j++)
             {
                 chro[j] = r.nextInt(vec.length);
-//                System.out.printf("Contest selecting %d\n",chro[j]);
             }
 
             /*
@@ -215,9 +156,6 @@ public class AG
                 }
             }
         }
-//        System.out.println("Contest:");
-//        for(Chromosome c: ret)
-//            System.out.println(c);
         return ret;
     }
 }

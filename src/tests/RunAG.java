@@ -1,12 +1,14 @@
 package tests;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
 
 import geneticalgorithm.Chromosome;
 import geneticalgorithm.CompMaximize;
+import geneticalgorithm.CompMinimize;
 
 public class RunAG
 {
@@ -26,6 +28,7 @@ public class RunAG
         int op = 100;
         Chromosome o_pop[], n_pop[], tmp[];      
         Scanner sc = new Scanner(System.in);
+        Comparator<Chromosome> comp = null;
 
         
         /* Seting up variables */
@@ -67,6 +70,7 @@ public class RunAG
         case 1:
         	while (cycles < 1)
         	{
+        		comp = new CompMaximize();
         		System.out.printf("\nMaximizar funcao escolhido");
         		System.out.printf("\nQuantos ciclos rodar: ");
         		cycles = sc.nextInt();
@@ -75,10 +79,12 @@ public class RunAG
         case 2:
         	while (cycles < 1)
         	{
+        		comp = new CompMinimize();
         		System.out.printf("\n\nMinimizar funcao escolhido");
         		System.out.printf("\nQuantos ciclos rodar: ");
         		cycles = sc.nextInt();
         	}
+        	break;
         default:
         	System.out.println("Opção " + op + "inválida, por favor escolha:");
         	System.out.printf("0 - Sair\n");
@@ -117,7 +123,7 @@ public class RunAG
             }
 
             /* Sort the vector using Rank*/
-            Arrays.sort(o_pop, new CompMaximize());
+            Arrays.sort(o_pop, comp);
             for(Chromosome c: o_pop)
                 System.out.printf("f(%f) = %f\n", c.getValue(), c.getRank());
 

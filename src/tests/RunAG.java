@@ -137,7 +137,7 @@ public class RunAG
                 System.out.printf("      [%d] = f(%f) = %f {%s}\n", k, o_pop[k].getValue(), o_pop[k].getRank(), o_pop[k]);
 
             /* Do a contest */
-            tmp = Chromosome.contest(o_pop, (pop-elite), 5);
+            tmp = Chromosome.contest(o_pop, (pop-elite), 5, comp);
 
             /* Put the result of the contest in n_pop */
             for(k = 0; k < pop-elite; k++)

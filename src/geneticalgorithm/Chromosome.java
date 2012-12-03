@@ -1,6 +1,7 @@
 package geneticalgorithm;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public class Chromosome implements Comparable
@@ -229,9 +230,10 @@ public class Chromosome implements Comparable
      * @param vec Original population
      * @param n_children Number of children that will be generated
      * @param k Number of chromosomes in each contest
+     * @param comp a Comparator to sort chromosomes by Crhomossome.rank
      * @return A new population
      */
-    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k)
+    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k, Comparator comp)
     {
         Chromosome ret[], sort[], children[];
         Random r = new Random();
@@ -260,7 +262,7 @@ public class Chromosome implements Comparable
             for(j = 0; j < k; j++)
                 sort[j] = vec[chro[j]];
 
-            Arrays.sort(sort, new CompMaximize());
+            Arrays.sort(sort, comp);
 
             /* Do a crossover with the winners */
             children = Chromosome.crossover(sort[0], sort[1]);

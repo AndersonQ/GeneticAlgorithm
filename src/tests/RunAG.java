@@ -33,20 +33,20 @@ public class RunAG
 
         while (txcross < 0 || txcross > 1)
         {
-        	System.out.printf("\nEscolha a taxa de crossover, real de 0 a 1 : ");
-        	txcross = sc.nextDouble();
+        	System.out.printf("\nEscolha a taxa de crossover, inteiro de 0 a 100 : ");
+        	txcross = sc.nextInt()/100.0;
         }
 
         while (mutation < 0 || mutation > 1)
         {
-        	System.out.printf("\nEscolha a taxa de mutacao, real de 0 a 1 : ");
-        	mutation = sc.nextDouble();
+        	System.out.printf("\nEscolha a taxa de mutacao, inteiro de 0 a 100 : ");
+        	mutation = sc.nextInt()/100.0;
         }
 
         while (elitep < 0 || mutation > 1)
         {
-        	System.out.printf("\nEscolha a taxa de elitismo, real de 0 a 1 : ");
-        	elitep = sc.nextDouble();
+        	System.out.printf("\nEscolha a taxa de elitismo, inteiro de 0 a 100 : ");
+        	elitep = sc.nextInt()/100.0;
         }
 
         while (elitep < 0 || mutation > 1)
@@ -65,28 +65,28 @@ public class RunAG
         switch(op)
         {
         case 1:
-        	while (cycles < 1)
-        	{
-        		System.out.printf("\nMaximizar funcao escolhido");
-        		System.out.printf("\nQuantos ciclos rodar: ");
-        		cycles = sc.nextInt();
-        	}
-        	break;
+            while (cycles < 1)
+            {
+                System.out.printf("\nMaximizar funcao escolhido");
+                System.out.printf("\nQuantos ciclos rodar: ");
+                cycles = sc.nextInt();
+            }
+            break;
         case 2:
-        	while (cycles < 1)
-        	{
-        		System.out.printf("\n\nMinimizar funcao escolhido");
-        		System.out.printf("\nQuantos ciclos rodar: ");
-        		cycles = sc.nextInt();
-        	}
+            while (cycles < 1)
+            {
+                System.out.printf("\n\nMinimizar funcao escolhido");
+                System.out.printf("\nQuantos ciclos rodar: ");
+                cycles = sc.nextInt();
+            }
         default:
-        	System.out.println("Opção " + op + "inválida, por favor escolha:");
-        	System.out.printf("0 - Sair\n");
-        	System.out.printf("1 - Maximizar funcao\n");
-        	System.out.printf("2 - Minimizar funcao\n");
-        	System.out.printf("> ");
-        	op = sc.nextInt();
-        	break;
+            System.out.println("Opção " + op + "inválida, por favor escolha:");
+            System.out.printf("0 - Sair\n");
+            System.out.printf("1 - Maximizar funcao\n");
+            System.out.printf("2 - Minimizar funcao\n");
+            System.out.printf("> ");
+            op = sc.nextInt();
+            break;
         }
         /* End set up variables */
         

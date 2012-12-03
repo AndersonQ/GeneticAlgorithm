@@ -9,7 +9,7 @@ public class Chromosome implements Comparable
 	/** Float part of chromosome */
 	private int[] decimal;
 	/** Number of bits of each chromosome part */
-	private static int BITS = 16;
+	public static int BITS = 5;
 	/** A rank to this chromosome, it means, how good it is to evaluate function*/
 	private double rank;
 

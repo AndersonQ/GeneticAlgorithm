@@ -24,12 +24,11 @@ public class RunAG
         int i, k;
         int elite = (int) Math.floor(pop*(elitep));
         int op = 100;
-        Chromosome o_pop[], n_pop[], tmp[];
-
-        
+        Chromosome o_pop[], n_pop[], tmp[];      
         Scanner sc = new Scanner(System.in);
 
-        // Seting variables to reenter while loopings
+        
+        /* Seting up variables */
         mutation=-1; elitep=-1; txcross=-1; cycles=-1;
 
         while (txcross < 0 || txcross > 1)
@@ -89,7 +88,10 @@ public class RunAG
         	op = sc.nextInt();
         	break;
         }
-
+        /* End set up variables */
+        
+        /* Starting Algorithm */
+        
         o_pop = new Chromosome[pop];
         n_pop = new Chromosome[pop];
         
@@ -128,11 +130,17 @@ public class RunAG
             }
 
             /* Do a contest */
-            tmp = contest(o_pop, (pop-elite), 5);
+            tmp = Chromosome.contest(o_pop, (pop-elite), 5);
             
             /* Put the result of the contest in n_pop */
             for(k = 0; k < pop-elite; k++)
-                n_pop[k+elite] = tmp[k];
+            {
+            	//Apply crossover, or not
+            	if(Math.random() <= txcross)
+            		n_pop[k+elite] = tmp[k];
+            	else
+            		n_pop[k+elite] = o_pop[k+elite];
+            }
 
             /* Mutate */
             for(k=elite; k < pop; k++)
@@ -153,76 +161,5 @@ public class RunAG
         v = -1.0*Math.pow(x-1.0, 2.0)+5.0; //it's f(x) = -(x-1)^2 +5
 
         return v;
-    }
-    
-    /**
-     * Use the contest method to
-     * create a new population of 
-     * chromosomes
-     * 
-     * @param vec Original population
-     * @param n_children Number of children that will be generated
-     * @param k Number of chromosomes in each contest
-     * @return A new population
-     */
-    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k)
-    {
-        Chromosome ret[], sort[], children[];
-        Random r = new Random();
-        int i, chro[], j;
-        
-        chro = new int[k]; 
-        sort = new Chromosome[k];
-        ret = new Chromosome[n_children];
-        
-        /* create each child */
-        for(i = 0; i < n_children; i++)
-        {
-            /*
-             * Select the challengers
-             */
-            for(j = 0; j < k; j++)
-            {
-                chro[j] = r.nextInt(vec.length);
-            }
-
-            /*
-             * Start the challenge, put the chromosomes
-             * in a array, order it and get the first
-             * and the second (winners).
-             */
-            for(j = 0; j < k; j++)
-                sort[j] = vec[chro[j]];
-
-            Arrays.sort(sort, new CompMaximize());
-
-            /* Do a crossover with the winners */
-            children = Chromosome.crossover(sort[0], sort[1]);
-
-            /*
-             * Randomically select a child
-             * and copy it's 'numbers' to
-             * ret vector
-             */
-            if(r.nextBoolean())
-            {
-                ret[i] = new Chromosome();
-                for(j = 0; j < Chromosome.BITS; j++)
-                {
-                    ret[i].getInteger()[j] = children[0].getInteger()[j];
-                    ret[i].getDecimal()[j] = children[0].getDecimal()[j];
-                }
-            }
-            else
-            {
-                ret[i] = new Chromosome();
-                for(j = 0; j < Chromosome.BITS; j++)
-                {
-                    ret[i].getInteger()[j] = children[1].getInteger()[j];
-                    ret[i].getDecimal()[j] = children[1].getDecimal()[j];
-                }
-            }
-        }
-        return ret;
-    }
+    }    
 }

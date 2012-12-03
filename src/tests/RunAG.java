@@ -58,6 +58,9 @@ public class RunAG
         	pop = sc.nextInt();
         }
 
+        System.out.print("\nEscolha o número de bits do cromossomo: ");
+        Chromosome.setBITS(sc.nextInt());
+
         System.out.printf("0 - Sair\n");
         System.out.printf("1 - Maximizar funcao\n");
         System.out.printf("2 - Minimizar funcao\n");

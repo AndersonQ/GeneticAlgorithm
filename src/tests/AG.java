@@ -27,7 +27,7 @@ public class AG
         o_pop = new Chromosome[pop];
         n_pop = new Chromosome[pop];
         
-        System.out.println("Function to miximize:");
+        System.out.println("Function to maximize: f(x) = -(x-1)^2 +5");
         for(int x = -10; x < 21; x++)
             System.out.printf("f(%d) = %f\n", x, -1.0*Math.pow(x-1.0, 2.0)+5.0);
 
@@ -176,7 +176,7 @@ public class AG
              * */
             for(j = 0; j < k; j++)
             {
-                chro[j] = r.nextInt(n_children) + elite;
+                chro[j] = r.nextInt(n_children + elite);
 //                System.out.printf("Contest selecting %d. Elite = %d\n", chro[j], elite);
             }
 

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import geneticalgorithm.Chromosome;
 import geneticalgorithm.CompMaximize;
+import geneticalgorithm.CompMinimize;
 
 public class AG
 {
@@ -17,6 +18,7 @@ public class AG
     {
         double mutation = 0.05;
         double elitep = 0.10;
+        double threshold = 0.95;
         int pop = 50;
         int cycles = 50;
         int i, k;
@@ -28,7 +30,7 @@ public class AG
         
         System.out.println("Function to maximize: f(x) = -(x-1)^2 +5");
         for(int x = -10; x < 21; x++)
-            System.out.printf("f(%d) = %f\n", x, -1.0*Math.pow(x-1.0, 2.0)+5.0);
+            System.out.printf("f(%d) = %f\n", x, 1.0*Math.pow(x-10.0, 2.0)+5.0);
 
         System.out.printf("Initializing....\n");
         for(i = 0; i < pop; i++)
@@ -48,9 +50,21 @@ public class AG
             }
 
             /* Sort the vector using Rank*/
-            Arrays.sort(o_pop, new CompMaximize());
+            Arrays.sort(o_pop, new CompMinimize());
             for(Chromosome c: o_pop)
                 System.out.printf("f(%f) = %f\n", c.getValue(), c.getRank());
+
+            /******************************** Stop Criteria ********************************/
+            /*
+             * If 10% of the population is equal
+             * stop
+             */
+            boolean stop = true;
+            for(int count = 0; count < (int)Math.floor(pop*threshold); count++)
+                if(o_pop[count].getValue() != o_pop[count+1].getValue())
+                    stop = false;
+            if(stop)
+                break;
 
             /* Put the elite in the new population vector */
             System.out.println("Elite:");
@@ -83,7 +97,7 @@ public class AG
     {
         double v, x = c.getValue();
 
-        v = -1.0*Math.pow(x-1.0, 2.0)+5.0; //it's f(x) = -(x-1)^2 +5
+        v = 1.0*Math.pow(x-10.0, 2.0)+5.0; //it's f(x) = -(x-1)^2 +5
 
         return v;
     }
@@ -127,7 +141,7 @@ public class AG
             for(j = 0; j < k; j++)
                 sort[j] = vec[chro[j]];
 
-            Arrays.sort(sort, new CompMaximize());
+            Arrays.sort(sort, new CompMinimize());
 
             /* Do a crossover with the winners */
             children = Chromosome.crossover(sort[0], sort[1]);

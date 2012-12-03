@@ -118,7 +118,7 @@ public class AG
 //            }
             
             /* Do a contest */
-            tmp = contest(o_pop, (pop-elite), 5, elite);
+            tmp = contest(o_pop, (pop-elite), 5);
             
             /* Put the result of the contest in n_pop */
             for(k = 0; k < pop-elite; k++)
@@ -154,10 +154,9 @@ public class AG
      * @param vec Original population
      * @param n_children Number of children that will be generated
      * @param k Number of chromosomes in each contest
-     * @param elite Position of vec to finish the selection 
      * @return A new population
      */
-    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k, int elite)
+    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k)
     {
         Chromosome ret[], sort[], children[];
         Random r = new Random();
@@ -171,13 +170,12 @@ public class AG
         for(i = 0; i < n_children; i++)
         {
             /*
-             * Select the challengers between
-             * 0 and elite -1
-             * */
+             * Select the challengers
+             */
             for(j = 0; j < k; j++)
             {
-                chro[j] = r.nextInt(n_children + elite);
-//                System.out.printf("Contest selecting %d. Elite = %d\n", chro[j], elite);
+                chro[j] = r.nextInt(vec.length);
+//                System.out.printf("Contest selecting %d\n",chro[j]);
             }
 
             /*

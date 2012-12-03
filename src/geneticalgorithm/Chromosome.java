@@ -1,5 +1,6 @@
 package geneticalgorithm;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Chromosome implements Comparable
@@ -219,6 +220,78 @@ public class Chromosome implements Comparable
 	    if(Math.random() <= tax)
 	        pdec1[i] = (pdec1[i]+1)%2;
 	}
+	
+    /**
+     * Use the contest method to
+     * create a new population of 
+     * chromosomes
+     * 
+     * @param vec Original population
+     * @param n_children Number of children that will be generated
+     * @param k Number of chromosomes in each contest
+     * @return A new population
+     */
+    public static Chromosome[] contest(Chromosome[] vec, int n_children, int k)
+    {
+        Chromosome ret[], sort[], children[];
+        Random r = new Random();
+        int i, chro[], j;
+        
+        chro = new int[k]; 
+        sort = new Chromosome[k];
+        ret = new Chromosome[n_children];
+        
+        /* create each child */
+        for(i = 0; i < n_children; i++)
+        {
+            /*
+             * Select the challengers
+             */
+            for(j = 0; j < k; j++)
+            {
+                chro[j] = r.nextInt(vec.length);
+            }
+
+            /*
+             * Start the challenge, put the chromosomes
+             * in a array, order it and get the first
+             * and the second (winners).
+             */
+            for(j = 0; j < k; j++)
+                sort[j] = vec[chro[j]];
+
+            Arrays.sort(sort, new CompMaximize());
+
+            /* Do a crossover with the winners */
+            children = Chromosome.crossover(sort[0], sort[1]);
+
+            /*
+             * Randomically select a child
+             * and copy it's 'numbers' to
+             * ret vector
+             */
+            if(r.nextBoolean())
+            {
+                ret[i] = new Chromosome();
+                for(j = 0; j < Chromosome.BITS; j++)
+                {
+                    ret[i].getInteger()[j] = children[0].getInteger()[j];
+                    ret[i].getDecimal()[j] = children[0].getDecimal()[j];
+                }
+            }
+            else
+            {
+                ret[i] = new Chromosome();
+                for(j = 0; j < Chromosome.BITS; j++)
+                {
+                    ret[i].getInteger()[j] = children[1].getInteger()[j];
+                    ret[i].getDecimal()[j] = children[1].getDecimal()[j];
+                }
+            }
+        }
+        return ret;
+    }
+
 	
 	@Override
 	public String toString()

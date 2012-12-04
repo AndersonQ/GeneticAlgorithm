@@ -21,10 +21,10 @@ public class RunAG
         double mutation = 0.05;
         double elitep = 0.10;
         double txcross = 0;
-        int pop = 50;
-        int cycles = 50;
+        int pop = -50;
+        int cycles = -50;
         int i, k;
-        int elite = (int) Math.floor(pop*(elitep));
+        int elite = -1;
         int op = 100;
         Chromosome o_pop[], n_pop[], tmp[];      
         Scanner sc = new Scanner(System.in);
@@ -34,27 +34,27 @@ public class RunAG
         /* Seting up variables */
         mutation=-1; elitep=-1; txcross=-1; cycles=-1;
 
-        while (txcross < 0 || txcross > 1)
+        while (txcross < 0.0 || txcross > 1.0)
         {
         	System.out.printf("\nEscolha a taxa de crossover, inteiro de 0 a 100 : ");
         	txcross = sc.nextInt()/100.0;
         }
 
-        while (mutation < 0 || mutation > 1)
+        while (mutation < 0.0 || mutation > 1.0)
         {
         	System.out.printf("\nEscolha a taxa de mutacao, inteiro de 0 a 100 : ");
         	mutation = sc.nextInt()/100.0;
         }
 
-        while (elitep < 0 || mutation > 1)
+        while (elitep < 0.0 || elitep > 1.0)
         {
         	System.out.printf("\nEscolha a taxa de elitismo, inteiro de 0 a 100 : ");
         	elitep = sc.nextInt()/100.0;
         }
 
-        while (elitep < 0 || mutation > 1)
+        while (pop < 0 || pop > Integer.MAX_VALUE)
         {
-        	System.out.printf("\nEscolha o tamanho da população, inteiro de 1 a %d :", Integer.MAX_VALUE);
+        	System.out.printf("\nEscolha o tamanho da população, inteiro de 1 a %d: ", Integer.MAX_VALUE);
         	pop = sc.nextInt();
         }
 
@@ -102,6 +102,8 @@ public class RunAG
         /* End set up variables */
         
         /* Starting Algorithm */
+
+        elite = (int) Math.floor(pop*(elitep));
         
         o_pop = new Chromosome[pop];
         n_pop = new Chromosome[pop];

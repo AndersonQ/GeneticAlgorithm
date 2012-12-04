@@ -16,12 +16,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package tests;
+package geneticalgorithm;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Random;
 import java.util.Scanner;
 
 import geneticalgorithm.Chromosome;

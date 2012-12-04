@@ -1,4 +1,4 @@
-package tests;
+package geneticalgorithm;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,9 +6,6 @@ import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
 
-import geneticalgorithm.Chromosome;
-import geneticalgorithm.CompMaximize;
-import geneticalgorithm.CompMinimize;
 
 public class RunAG
 {

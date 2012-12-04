@@ -129,7 +129,7 @@ public class RunAG
         o_pop = new Chromosome[pop];
         n_pop = new Chromosome[pop];
         
-        System.out.println("Function to maximize: f(x) = -(x-1)^2 +5");
+        System.out.println("Function: f(x) = -(x-1)^2 +5");
         for(int x = -10; x < 21; x++)
             System.out.printf("f(%d) = %f\n", x, -1.0*Math.pow(x-1.0, 2.0)+5.0);
 
